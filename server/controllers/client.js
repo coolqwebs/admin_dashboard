@@ -46,7 +46,7 @@ export const getTransactions = async (req, res) => {
     };
 
     const sortFormatted = Boolean(sort) ? generateSort() : {};
-    // TODO: Rework search logic, doesn't work properly
+
     const transactions = await Transaction.find({
       $or: [
         { cost: { $regex: new RegExp(search, "i") } },
@@ -57,7 +57,12 @@ export const getTransactions = async (req, res) => {
       .skip(page * pageSize)
       .limit(pageSize);
 
-    const total = await Transaction.countDocuments();
+    const total = await Transaction.countDocuments({
+      $or: [
+        { cost: { $regex: search, $options: "i" } },
+        { userId: { $regex: search, $options: "i" } },
+      ],
+    });
 
     res.status(200).json({
       transactions,
@@ -80,10 +85,6 @@ export const getGeography = async (_, res) => {
       acc[countryISO3]++;
       return acc;
     }, {});
-    console.log(
-      "🚀 ~ file: client.js:83 ~ mappedLocations ~ mappedLocations:",
-      mappedLocations
-    );
 
     const formattedLocations = Object.entries(mappedLocations).map(
       ([country, count]) => {
