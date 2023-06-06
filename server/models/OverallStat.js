@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const OverallStatSchema = mongoose.Schema(
   {
     totalCustomers: Number,
-    yearlySellsTotal: Number,
+    yearlySalesTotal: Number,
     yearlyTotalSoldUnits: Number,
     year: Number,
     monthlyData: [

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Header from "components/Header";
 import { ResponsiveLine } from "@nivo/line";
 import { useGetSalesQuery } from "state/api";
@@ -87,7 +87,7 @@ const Monthly = () => {
               reverse: false,
             }}
             yFormat=" >-.2f"
-            curve="catmullRom"
+            // curve="catmullRom"w
             axisTop={null}
             axisRight={null}
             axisBottom={{
