@@ -14,6 +14,7 @@ import {
   Collapse,
 } from "@mui/material";
 
+// TODO: put into separate component
 const Product = ({
   _id,
   name,

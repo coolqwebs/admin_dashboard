@@ -48,3 +48,6 @@ function App() {
 }
 
 export default App;
+
+// TODO: work app and charts especially adaptivness
+// TODO: when sidebar is open, main content goes out of visible viewport and create scroll overflow
